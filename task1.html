@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!--home button-->
+<button class="home" onclick="window.location.href='index.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white">მთავარი</button>
+    <div class="container">
+        <div class="task">
+            <h2>ამოცანა 1</h2>
+            <p>მოცემულია სიმულაცია სადაც მომხმარებელი რეგისტრირდება ვებ-გვერდზე,</p>
+            <p>სამი ველი: "ელექტრონული ფოსტა", "მეტსახელი" და "გვარი" უკვე შევსებულია</p>
+            <p>ჩვენი მიზანია გამოვიცნოთ ყველა შესაძლო ვარიანტი თუ რა შეიძლება ჩაწეროს</p>
+            <p>მომხმარებელმა "სახელი"-ის ველში </p>
+            <strong style="color: crimson">***მინიშნება*** - სულ უნდა იპოვოთ 16 ვარიანტი</strong>
+            <br>
+            <br>
+            <form>
+                <div>
+                    <label for="email">ელ.ფოსტა:</label>
+                    <input type="email" id="email" placeholder="kapana@gmail.com" disabled>
+                </div>
+                <div>
+                    <label for="surname">მეტსახელი:</label>
+                    <input type="text" id="surname" placeholder="კაპანა" disabled>
+                </div>
+                <div>
+                    <label for="firstName">სახელი:</label>
+                    <input type="text" id="firstName">
+                </div>
+                <div>
+                    <label for="lastName">გვარი:</label>
+                    <input type="text" id="lastName" placeholder="კაპანაძე" disabled>
+                </div>
+                <button type="submit">დასტური</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
