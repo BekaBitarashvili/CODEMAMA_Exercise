@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+<form action="/" method="GET">
+    <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white">მთავარი</button>
+</form>
+<form action="/clear_options" method="POST">
+    <button type="submit" style="padding: 10px 20px; background-color: red; color: white">გასუფთავება</button>
+</form>
+<div class="container">
+    <div class="task">
+        <h2>ამოცანა 1</h2>
+        <p>მოცემულია სიმულაცია სადაც მომხმარებელი რეგისტრირდება ვებ-გვერდზე,</p>
+        <p>სამი ველი: "ელექტრონული ფოსტა", "მეტსახელი" და "გვარი" უკვე შევსებულია</p>
+        <p>ჩვენი მიზანია გამოვიცნოთ ყველა შესაძლო ვარიანტი თუ რა შეიძლება ჩაწეროს</p>
+        <p>მომხმარებელმა "სახელი"-ის ველში </p>
+        <strong style="color: crimson">***მინიშნება*** - სულ უნდა იპოვოთ 16 ვარიანტი</strong>
+        <br>
+        <br>
+        <form id="taskForm" action="/task1" method="post">
+            <div>
+                <label for="email">ელ.ფოსტა:</label>
+                <input type="email" id="email" placeholder="kapana@gmail.com" disabled>
+            </div>
+            <div>
+                <label for="surname">მეტსახელი:</label>
+                <input type="text" id="surname" placeholder="kapana" disabled>
+            </div>
+            <div>
+                <label for="firstName">სახელი:</label>
+                <input type="text" id="firstName" name="firstName">
+            </div>
+            <div>
+                <label for="lastName">გვარი:</label>
+                <input type="text" id="lastName" placeholder="kapanadze" disabled>
+            </div>
+            <button type="submit">დასტური</button>
+        </form>
+        <br>
+        <br>
+        <div id="messages">
+            {% for message in messages %}
+                <div>{{ messages }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+<!--    // ყოჩაღ შენ იპოვე ტექსტი: 'I love testing' ეს ტექსტი დააკოპირე და ჩაწერე სახელის ველში-->
