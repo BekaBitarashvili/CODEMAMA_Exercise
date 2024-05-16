@@ -30,5 +30,3 @@ async function simulateTyping() {
 }
 
 simulateTyping();
-
-// delete button logic

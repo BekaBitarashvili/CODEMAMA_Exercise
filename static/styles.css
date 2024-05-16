@@ -2,8 +2,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #1f1f1f; /* Dark gray background */
-    color: white; /* White text */
+    background-color: #1f1f1f;
+    color: white;
 }
 
 .container {
@@ -14,10 +14,10 @@ body {
 }
 
 .task {
-    background-color: #333; /* Dark color for task background */
+    background-color: #333;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* White shadow */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .task h2 {
@@ -47,9 +47,9 @@ body {
 .task input[type="text"] {
     width: 200px;
     padding: 8px;
-    border: 1px solid #ccc; /* Light gray border */
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #1f1f1f; /* Dark gray input background */
+    background-color: #1f1f1f;
     color: white;
 }
 
@@ -57,13 +57,13 @@ body {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50; /* Green button */
+    background-color: #4CAF50;
     color: white;
     cursor: pointer;
 }
 
 .task button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049;
 }
 
 
@@ -88,7 +88,7 @@ body {
 /*** TERMINAL ***/
 .terminal-box {
   background-color: #000;
-  color: #00FF00; /* Green text */
+  color: #00FF00;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
