@@ -10,7 +10,7 @@
 <form action="/" method="GET">
     <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white">მთავარი</button>
 </form>
-<form action="/clear_options" method="POST">
+<form action="/clear_options" method="POST" onsubmit="clearOptions()">
     <button type="submit" style="padding: 10px 20px; background-color: red; color: white">გასუფთავება</button>
 </form>
 <div class="container">
@@ -19,8 +19,9 @@
         <p>მოცემულია სიმულაცია სადაც მომხმარებელი რეგისტრირდება ვებ-გვერდზე,</p>
         <p>სამი ველი: "ელექტრონული ფოსტა", "მეტსახელი" და "გვარი" უკვე შევსებულია</p>
         <p>ჩვენი მიზანია გამოვიცნოთ ყველა შესაძლო ვარიანტი თუ რა შეიძლება ჩაწეროს</p>
-        <p>მომხმარებელმა "სახელი"-ის ველში </p>
-        <strong style="color: crimson">***მინიშნება*** - სულ უნდა იპოვოთ 16 ვარიანტი</strong>
+        <p>მომხმარებელმა "სახელი"-ის ველში.</p>
+        <p>სახელის მაქსიმალური რაოდენობაა 20 ერთეული</p>
+        <strong style="color: crimson">***მინიშნება*** - სულ უნდა იპოვოთ 14 ვარიანტი</strong>
         <br>
         <br>
         <form id="taskForm" action="/task1" method="post">
@@ -40,21 +41,29 @@
                 <label for="lastName">გვარი:</label>
                 <input type="text" id="lastName" placeholder="kapanadze" disabled>
             </div>
+            <input type="hidden" name="clear_options" id="clear_options" value="false">
             <button type="submit">დასტური</button>
         </form>
         <br>
         <br>
         <div id="messages">
+            {% set unique_messages = [] %}
             {% for message in messages %}
-                <div>{{ messages }}</div>
+                {% if message not in unique_messages %}
+                    <div>{{ message }}</div>
+                    {% set _ = unique_messages.append(message) %}
+                {% endif %}
             {% endfor %}
         </div>
     </div>
 </div>
-
+<script>
+    function clearOptions() {
+        document.getElementById('clear_options').value = 'true';
+    }
+</script>
 </body>
 </html>
 
 
-
-<!--    // ყოჩაღ შენ იპოვე ტექსტი: 'I love testing' ეს ტექსტი დააკოპირე და ჩაწერე სახელის ველში-->
+<!--    // ყოჩაღ გახსენი Source და იპოვე ტექსტი: 'ilovetesting' ეს ტექსტი დააკოპირე და ჩაწერე სახელის ველში-->
