@@ -10,6 +10,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/task3', methods=['POST', 'GET'])
+def task3():
+    return render_template('task3.html')
+
+
 @app.route('/task1', methods=['POST', 'GET'])
 def task1():
     global messages
