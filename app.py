@@ -10,6 +10,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/task2', methods=['POST', 'GET'])
+def task2():
+    return render_template('task2.html')
+
+
 @app.route('/task3', methods=['POST', 'GET'])
 def task3():
     return render_template('task3.html')
