@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background-color: #1f1f1f;
+            color: white;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input:invalid {
+            border-color: red;
+        }
+
+        input:valid {
+            border-color: green;
+        }
+
+        .error {
+            color: lime;
+            font-weight: bold;
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+<form action="/" method="GET">
+    <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white">მთავარი</button>
+</form>
+<div class="container">
+    <h2>ამოცანა 4</h2>
+    <p>ამ ინფუთ ფილდს აქვს HTML5-ის ვალიდაცია. დარწმუნდი რომ შენი ბრაუზერი მხარს უჭერს აღნიშნულს.</p>
+    <form action="/submit" method="post">
+        <label for="number">ჩაწერე ციფრისგან განსხვავებული სიმბოლო:</label>
+        <input type="number" id="number" name="number" required>
+        <input type="submit" value="Submit">
+    </form>
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+</div>
+</body>
+</html>

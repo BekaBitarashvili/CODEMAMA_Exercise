@@ -20,6 +20,11 @@ def task3():
     return render_template('task3.html')
 
 
+@app.route('/task4', methods=['POST', 'GET'])
+def task4():
+    return render_template('task4.html')
+
+
 @app.route('/task1', methods=['POST', 'GET'])
 def task1():
     global messages
@@ -76,6 +81,17 @@ def clear_options():
     global messages
     messages = set()
     return render_template('task1.html', messages=messages)
+
+
+@app.route('/submit', methods=['POST', 'GET'])
+def submit():
+    number = request.form.get('number')
+    try:
+        int_number = int(number)
+        return f'შენი შეყვანილი რიცხვია: {int_number} , ჩვენი მიზანია შევიყვანოთ სხვა ტიპის მონაცემები'
+    except ValueError:
+        error = '***ყოჩაღ! შენი შეყვანილი ტექსტი არ არის რიცხვი***'
+        return render_template('task4.html', error=error)
 
 
 if __name__ == '__main__':
