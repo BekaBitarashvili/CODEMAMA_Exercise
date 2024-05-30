@@ -29,9 +29,15 @@ def task4():
 def task5():
     return render_template('task5.html')
 
+
 @app.route('/task6', methods=['POST', 'GET'])
 def task6():
     return render_template('task6.html')
+
+
+@app.route('/task7', methods=['POST', 'GET'])
+def task7():
+    return render_template('task7.html')
 
 
 @app.route('/task1', methods=['POST', 'GET'])
