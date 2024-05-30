@@ -9,64 +9,79 @@
         .error {
             color: red;
         }
+        .task7 {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 <form action="/" method="GET">
     <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white">მთავარი</button>
 </form>
-<h2>Form Validation Challenge</h2>
+<h3 class="task7">ამოცანა ფორმის ვალიდაციაზე</h3>
 <div class="container">
     <form id="testForm">
-        <label for="name">Name:</label>
+        <label for="name">სახელი:</label>
         <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" title="Only letters and spaces are allowed" required>
         <br>
+        <br>
 
-        <label for="email">Email:</label>
+        <label for="email">ელ-ფოსტა:</label>
         <input type="email" id="email" name="email" required>
         <br>
+        <br>
 
-        <label for="password">Password:</label>
+        <label for="password">პაროლი:</label>
         <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}" title="Must contain at least one number, one special character, and be at least 8 characters long" required>
         <br>
+        <br>
 
-        <label for="confirmPassword">Confirm Password:</label>
+        <label for="confirmPassword">გაიმეორე პაროლი:</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required>
         <br>
+        <br>
 
-        <label for="phone">Phone Number:</label>
+        <label for="phone">ტელეფონი:</label>
         <input type="tel" id="phone" name="phone" pattern="\d{10}" title="Must be a 10-digit phone number" required>
         <br>
+        <br>
 
-        <label for="dob">Date of Birth:</label>
+        <label for="dob">დაბადების თარიღი:</label>
         <input type="date" id="dob" name="dob" required>
         <br>
-
-        <label for="website">Website URL (optional):</label>
-        <input type="url" id="website" name="website">
         <br>
 
-        <label for="country">Country:</label>
+        <label for="website">ვებგვერდი (optional):</label>
+        <input type="url" id="website" name="website">
+        <br>
+        <br>
+
+        <label for="country">ქვეყანა:</label>
         <select id="country" name="country" required>
-            <option value="">Select a country</option>
-            <option value="us">United States</option>
-            <option value="ca">Canada</option>
-            <option value="uk">United Kingdom</option>
+            <option value="">აირჩიეთ ერთ-ერთი</option>
+            <option value="us">აშშ</option>
+            <option value="ca">კანადა</option>
+            <option value="uk">დიდი ბრიტანეთი</option>
+            <option value="ca">საქართველო</option>
+            <option value="ca">სომხეთი</option>
             <!-- Add more -->
         </select>
         <br>
+        <br>
 
-        <label for="postalCode">Postal Code:</label>
+        <label for="postalCode">საფოსტო კოდი:</label>
         <input type="text" id="postalCode" name="postalCode" pattern="\d{5}" title="Must be a 5-digit postal code" required>
+        <br>
         <br>
 
         <label>
             <input type="checkbox" id="agree" name="agree" required>
-            I agree to the terms and conditions
+            ვეთანხმები წესებსა და პირობებს
         </label>
         <br>
+        <br>
 
-        <button type="submit">Submit</button>
+        <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white">დასტური</button>
     </form>
 
     <div id="errorMessages" class="error"></div>
