@@ -40,6 +40,11 @@ def task7():
     return render_template('task7.html')
 
 
+@app.route('/task8', methods=['POST', 'GET'])
+def task8():
+    return render_template('task8.html')
+
+
 @app.route('/task1', methods=['POST', 'GET'])
 def task1():
     global messages
