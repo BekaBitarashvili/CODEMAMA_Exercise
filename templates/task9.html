@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #262424;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="file"] {
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<form action="/" method="GET">
+    <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white; margin-top: -300px; margin-left: -400px">მთავარი</button>
+</form>
+<body>
+<div class="container">
+    <h2>ფაილის ატვირთვის ვალიდაციები</h2>
+    <form id="fileUploadForm">
+        <label for="file">ატვირთე ფაილი:</label>
+        <input type="file" id="file" name="file" accept=".jpg,.png,.gif" required>
+        <button type="submit">ატვირთვა</button>
+    </form>
+    <div id="errorMessage" class="error"></div>
+</div>
+
+<script>
+    document.getElementById('fileUploadForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const fileInput = document.getElementById('file');
+        const file = fileInput.files[0];
+        const errorMessage = document.getElementById('errorMessage');
+
+        if (!file) {
+            errorMessage.innerHTML = 'ფაილი არაა არჩეული.';
+            return;
+        }
+
+        const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!validTypes.includes(file.type)) {
+            errorMessage.innerHTML = 'არასწორი ფაილის ტიპი, სცადეთ სხვა ტიპის სურათი.';
+            return;
+        }
+
+        if (file.size > 2 * 1024 * 1024) { // 2MB
+            errorMessage.innerHTML = 'ფაილის ზომა სცდება დაწესებულ ლიმიტს.';
+            return;
+        }
+
+        errorMessage.innerHTML = '';
+        alert('ფაილი აიტვირთა წარმატებით!');
+    });
+</script>
+</body>
+</html>
