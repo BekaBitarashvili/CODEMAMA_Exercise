@@ -2,8 +2,25 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #1f1f1f;
     color: white;
+    background: linear-gradient(-50deg, #3f3d3d, #623300, #671800, #212223);
+    background-size: 400% 400%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    animation: change 5s ease-in-out infinite;
+}
+@keyframes change {
+	0% {
+		background-position: 0 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0 50%;
+	}
 }
 
 .container {
