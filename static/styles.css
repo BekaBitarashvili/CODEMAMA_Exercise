@@ -86,7 +86,7 @@ body {
 
 .navbar {
     width: 200px;
-    background-color: #333;
+    background-color: #671800FF;
     display: flex;
     flex-direction: column;
 }
@@ -141,4 +141,7 @@ body {
     border-color: transparent;
   }
 }
-/* TASK 1 MESSAGE */
+.testlogo {
+    width: 200px;
+    height: 200px;
+}
