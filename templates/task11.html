@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 11</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #414040;
+
+
+        .task {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .task button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .task button:hover {
+            background-color: #45a049;
+        }
+
+        .task .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .quiz-question, .tictactoe, .math-workout {
+            margin-top: 20px;
+        }
+
+        .quiz-question input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .tictactoe-board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 5px;
+            justify-content: center;
+            margin: 20px auto;
+        }
+
+        .tictactoe-cell {
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .tictactoe-cell.x {
+            color: #4CAF50;
+        }
+
+        .tictactoe-cell.o {
+            color: #f44336;
+        }
+    </style>
+</head>
+<body>
+
+<div class="task">
+    <h2>Number Guessing Game</h2>
+    <p>Guess the number between 1 and 100!</p>
+    <input type="number" id="guess" placeholder="Enter your guess">
+    <button onclick="guessNumber()">Submit</button>
+    <p id="guessFeedback" class="error"></p>
+</div>
+
+<div class="task">
+    <h2>Interactive Quiz</h2>
+    <div class="quiz-question" id="quizQuestion1">
+        <p>1. განმარტეთ QA?</p>
+        <input type="radio" name="question1" value="qa"> კითხვა-პასუხი<br>
+        <input type="radio" name="question1" value="London"> <br>
+        <input type="radio" name="question1" value="Berlin"> Berlin<br>
+    </div>
+    <div class="quiz-question" id="quizQuestion2">
+        <p>2. What is 2 + 2?</p>
+        <input type="radio" name="question2" value="3"> 3<br>
+        <input type="radio" name="question2" value="4"> 4<br>
+        <input type="radio" name="question2" value="5"> 5<br>
+    </div>
+    <button onclick="submitQuiz()">Submit Quiz</button>
+    <p id="quizFeedback" class="error"></p>
+</div>
+
+<div class="task">
+    <h2>Tic-Tac-Toe</h2>
+    <div class="tictactoe-board" id="tictactoeBoard">
+        <div class="tictactoe-cell" onclick="makeMove(this, 0)"></div>
+        <div class="tictactoe-cell" onclick="makeMove(this, 1)"></div>
+        <div class="tictactoe-cell" onclick="makeMove(this, 2)"></div>
+        <div class="tictactoe-cell" onclick="makeMove(this, 3)"></div>
+        <div class="tictactoe-cell" onclick="makeMove(this, 4)"></div>
+        <div class="tictactoe-cell" onclick="makeMove(this, 5)"></div>
+        <div class="tictactoe-cell" onclick="makeMove(this, 6)"></div>
+        <div class="tictactoe-cell" onclick="makeMove(this, 7)"></div>
+        <div class="tictactoe-cell" onclick="makeMove(this, 8)"></div>
+    </div>
+    <p id="tictactoeFeedback" class="error"></p>
+</div>
+
+<script>
+    // Guessing Game
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+    function guessNumber() {
+        const guess = document.getElementById('guess').value;
+        const feedback = document.getElementById('guessFeedback');
+        if (guess < randomNumber) {
+            feedback.textContent = 'Higher!';
+        } else if (guess > randomNumber) {
+            feedback.textContent = 'Lower!';
+        } else {
+            feedback.textContent = 'Correct!';
+            feedback.style.color = 'green';
+        }
+    }
+
+    // Quiz
+    const quizAnswers = {
+        question1: 'Paris',
+        question2: '4'
+    };
+
+    function submitQuiz() {
+        const feedback = document.getElementById('quizFeedback');
+        let score = 0;
+        const question1 = document.querySelector('input[name="question1"]:checked');
+        const question2 = document.querySelector('input[name="question2"]:checked');
+        if (question1 && question1.value === quizAnswers.question1) score++;
+        if (question2 && question2.value === quizAnswers.question2) score++;
+        feedback.textContent = `You scored ${score} out of 2`;
+    }
+
+    // Tic-Tac-Toe
+    let currentPlayer = 'X';
+    const board = Array(9).fill(null);
+
+    function makeMove(cell, index) {
+        if (!board[index] && !checkWin()) {
+            board[index] = currentPlayer;
+            cell.textContent = currentPlayer;
+            cell.classList.add(currentPlayer.toLowerCase());
+            if (checkWin()) {
+                document.getElementById('tictactoeFeedback').textContent = `${currentPlayer} wins!`;
+            } else {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            }
+        }
+    }
+
+    function checkWin() {
+        const winPatterns = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
+        return winPatterns.some(pattern =>
+            pattern.every(index => board[index] === currentPlayer)
+        );
+    }
+
+    // Mad Libs Generator
+    document.getElementById('madLibsForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const noun = document.getElementById('noun').value;
+        const verb = document.getElementById('verb').value;
+        const adjective = document.getElementById('adjective').value;
+        const story = `Once upon a time, there was a ${adjective} ${noun} who loved to ${verb}.`;
+        document.getElementById('madLibsStory').textContent = story;
+    });
+
+    // Math Workout
+    let currentProblem;
+
+    function generateProblem(operation) {
+        const num1 = Math.floor(Math.random() * 10) + 1;
+        const num2 = Math.floor(Math.random() * 10) + 1;
+        let problem;
+        switch (operation) {
+            case 'add':
+                problem = `${num1} + ${num2}`;
+                currentProblem = num1 + num2;
+                break;
+            case 'subtract':
+                problem = `${num1} - ${num2}`;
+                currentProblem = num1 - num2;
+                break;
+            case 'multiply':
+                problem = `${num1} * ${num2}`;
+                currentProblem = num1 * num2;
+                break;
+            case 'divide':
+                problem = `${num1} / ${num2}`;
+                currentProblem = num1 / num2;
+                break;
+        }
+        document.getElementById('mathProblem').textContent = problem;
+    }
+
+    function submitMathAnswer() {
+        const answer = document.getElementById('mathAnswer').value;
+        const feedback = document.getElementById('mathFeedback');
+        if (Number(answer) === currentProblem) {
+            feedback.textContent = 'Correct!';
+            feedback.style.color = 'green';
+        } else {
+            feedback.textContent = 'Incorrect. Try again!';
+            feedback.style.color = 'red';
+        }
+    }
+</script>
+
+</body>
+</html>
