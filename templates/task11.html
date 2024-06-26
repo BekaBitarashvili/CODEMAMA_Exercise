@@ -12,98 +12,121 @@
             background: #414040;
 
 
-        .task {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
+            .task {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
 
-        h2 {
-            margin-top: 0;
-        }
+            & h2 {
+                margin-top: 0;
+            }
 
-        .task button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+            .task button {
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
 
-        .task button:hover {
-            background-color: #45a049;
-        }
+            .task button:hover {
+                background-color: #45a049;
+            }
 
-        .task .error {
-            color: red;
-            margin-top: 10px;
-        }
+            .task .error {
+                color: red;
+                margin-top: 10px;
+            }
 
-        .quiz-question, .tictactoe, .math-workout {
-            margin-top: 20px;
-        }
+            .quiz-question, .tictactoe, .math-workout {
+                margin-top: 20px;
+            }
 
-        .quiz-question input[type="radio"] {
-            margin-right: 10px;
-        }
+            .quiz-question input[type="radio"] {
+                margin-right: 10px;
+            }
 
-        .tictactoe-board {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            gap: 5px;
-            justify-content: center;
-            margin: 20px auto;
-        }
+            .tictactoe-board {
+                display: grid;
+                grid-template-columns: repeat(3, 100px);
+                gap: 5px;
+                justify-content: center;
+                margin: 20px auto;
+            }
 
-        .tictactoe-cell {
-            width: 100px;
-            height: 100px;
-            background-color: #ddd;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            cursor: pointer;
-        }
+            .tictactoe-cell {
+                width: 100px;
+                height: 100px;
+                background-color: #ddd;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                cursor: pointer;
+            }
 
-        .tictactoe-cell.x {
-            color: #4CAF50;
-        }
+            .tictactoe-cell.x {
+                color: #4CAF50;
+            }
 
-        .tictactoe-cell.o {
-            color: #f44336;
+            .tictactoe-cell.o {
+                color: #f44336;
+            }
         }
     </style>
 </head>
+<form action="/" method="GET">
+    <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white">მთავარი</button>
+</form>
 <body>
 
 <div class="task">
-    <h2>Number Guessing Game</h2>
-    <p>Guess the number between 1 and 100!</p>
-    <input type="number" id="guess" placeholder="Enter your guess">
-    <button onclick="guessNumber()">Submit</button>
+    <h2>რიცხვის გამოცნობა</h2>
+    <p>გამოიცანი რიცხვი 1-დან 100-ის ჩათვლით!</p>
+    <input type="number" id="guess" placeholder="ჩაწერე რიცხვი">
+    <button onclick="guessNumber()">დასტური</button>
     <p id="guessFeedback" class="error"></p>
 </div>
 
 <div class="task">
-    <h2>Interactive Quiz</h2>
+    <h2>ინტერაქციული ქვიზი</h2>
     <div class="quiz-question" id="quizQuestion1">
         <p>1. განმარტეთ QA?</p>
         <input type="radio" name="question1" value="qa"> კითხვა-პასუხი<br>
-        <input type="radio" name="question1" value="London"> <br>
-        <input type="radio" name="question1" value="Berlin"> Berlin<br>
+        <input type="radio" name="question1" value="qa2"> ხარისხის უზრუნველყოფა<br>
+        <input type="radio" name="question1" value="qa3"> პროგრამული უზრუნველყოფა<br>
     </div>
     <div class="quiz-question" id="quizQuestion2">
-        <p>2. What is 2 + 2?</p>
-        <input type="radio" name="question2" value="3"> 3<br>
-        <input type="radio" name="question2" value="4"> 4<br>
-        <input type="radio" name="question2" value="5"> 5<br>
+        <p>2. რა არის BUG?</p>
+        <input type="radio" name="question2" value="3"> ხოჭო<br>
+        <input type="radio" name="question2" value="4"> შეცდომა<br>
+        <input type="radio" name="question2" value="5"> მანქანის მოდელი<br>
     </div>
-    <button onclick="submitQuiz()">Submit Quiz</button>
+    <div class="quiz-question" id="quizQuestion3">
+        <p>3. რომელი არ არსებობს?</p>
+        <input type="radio" name="question3" value="black"> Black Box ტესტირება<br>
+        <input type="radio" name="question3" value="white"> White Box ტესტირება<br>
+        <input type="radio" name="question3" value="red"> Red Box ტესტირება<br>
+    </div>
+    <div class="quiz-question" id="quizQuestion4">
+        <p>4. რომელი არაა ტესტირების ავტომატიზაციის ფრეიმვორქი?</p>
+        <input type="radio" name="question4" value="selenium"> სელენიუმი<br>
+        <input type="radio" name="question4" value="selenide"> სელენაიდი<br>
+        <input type="radio" name="question4" value="celeron"> სელერონი<br>
+    </div>
+    <div class="quiz-question" id="quizQuestion5">
+        <p>5. რომელია მობაილზე ავტომატიზაციის ფრეიმვორქი?</p>
+        <input type="radio" name="question5" value="es"> ესპრესო<br>
+        <input type="radio" name="question5" value="ca"> კაპუჩინო<br>
+        <input type="radio" name="question5" value="la"> ლატე<br>
+    </div>
+    <br>
+    <button onclick="submitQuiz()">დადასტურება</button>
     <p id="quizFeedback" class="error"></p>
 </div>
 
@@ -142,8 +165,11 @@
 
     // Quiz
     const quizAnswers = {
-        question1: 'Paris',
-        question2: '4'
+        question1: 'qa2',
+        question2: '4',
+        question3: 'red',
+        question4: 'celeron',
+        question5: 'es'
     };
 
     function submitQuiz() {
@@ -151,9 +177,15 @@
         let score = 0;
         const question1 = document.querySelector('input[name="question1"]:checked');
         const question2 = document.querySelector('input[name="question2"]:checked');
+        const question3 = document.querySelector('input[name="question3"]:checked');
+        const question4 = document.querySelector('input[name="question4"]:checked');
+        const question5 = document.querySelector('input[name="question5"]:checked');
         if (question1 && question1.value === quizAnswers.question1) score++;
         if (question2 && question2.value === quizAnswers.question2) score++;
-        feedback.textContent = `You scored ${score} out of 2`;
+        if (question3 && question3.value === quizAnswers.question3) score++;
+        if (question4 && question4.value === quizAnswers.question4) score++;
+        if (question5 && question5.value === quizAnswers.question5) score++;
+        feedback.textContent = `You scored ${score} out of 5`;
     }
 
     // Tic-Tac-Toe
