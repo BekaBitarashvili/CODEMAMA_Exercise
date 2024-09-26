@@ -82,33 +82,33 @@ def task1():
 
 def validate_name(name):
     if len(name) == 1 and name.isspace() == False:
-        return {'indicator': '16/1', 'message': 'მინიმალური მნიშვნელობა'}
+        return {'indicator': '16/1', 'message': '→ მინიმალური მნიშვნელობა'}
     elif len(name) == 0:
-        return {'indicator': '16/2', 'message': 'ცარიელი მნიშვნელობა'}
+        return {'indicator': '16/2', 'message': '→ ცარიელი მნიშვნელობა'}
     elif name.isspace():
-        return {'indicator': '16/3', 'message': 'სფეისი'}
+        return {'indicator': '16/3', 'message': '→ სფეისი'}
     elif ' ' in name and (name != 'ilovetesting') and (name.startswith(' ') == False) and (name.endswith(' ') == False):
-        return {'indicator': '16/4', 'message': 'სფეისი შუაში'}
+        return {'indicator': '16/4', 'message': '→ სფეისი შუაში'}
     elif not all(char.isalpha() or char.isspace() for char in name) and name != '<html>':
-        return {'indicator': '16/5', 'message': 'ანბანისაგან განსხვავებული სიმბოლოები'}
+        return {'indicator': '16/5', 'message': '→ ანბანისაგან განსხვავებული სიმბოლოები'}
     elif name.startswith(' '):
-        return {'indicator': '16/6', 'message': 'სფეისი დასაწყისში'}
+        return {'indicator': '16/6', 'message': '→ სფეისი დასაწყისში'}
     elif name.lower() == 'ilovetesting':
-        return {'indicator': '16/7', 'message': 'ტექსტი ნაპოვნია: *I love testing*'}
+        return {'indicator': '16/7', 'message': '→ ტექსტი ნაპოვნია: *I love testing*'}
     elif name == '<html>':
-        return {'indicator': '16/8', 'message': 'შენ გამოიყენე html ტეგები'}
+        return {'indicator': '16/8', 'message': '→ შენ გამოიყენე html ტეგები'}
     elif any(ord(char) > 127 for char in name):
-        return {'indicator': '16/10', 'message': 'ლათინურისაგან განსხვავებული ასოები'}
+        return {'indicator': '16/10', 'message': '→ ლათინურისაგან განსხვავებული ასოები'}
     elif len(name) == 20:
-        return {'indicator': '16/12', 'message': 'მაქსიმალური მნიშვნელობა'}
+        return {'indicator': '16/12', 'message': '→ მაქსიმალური მნიშვნელობა'}
     elif len(name) > 20:
-        return {'indicator': '16/13', 'message': 'მაქსიმალურზე მეტი მნიშვნელობა'}
+        return {'indicator': '16/13', 'message': '→ მაქსიმალურზე მეტი მნიშვნელობა'}
     elif name.endswith(' '):
-        return {'indicator': '16/14', 'message': 'სფეისი ბოლოში'}
+        return {'indicator': '16/14', 'message': '→ სფეისი ბოლოში'}
     elif len(name) == 10:
-        return {'indicator': '16/15', 'message': 'საშუალო მნიშვნელობა'}
+        return {'indicator': '16/15', 'message': '→ საშუალო მნიშვნელობა'}
     else:
-        return {'indicator': 'unknown', 'message': 'სტანდარტული ვარიანტი'}
+        return {'indicator': 'unknown', 'message': '→ სტანდარტული ვარიანტი'}
 
 
 @app.route('/clear_options', methods=['POST'])
