@@ -77,7 +77,9 @@ def task1():
             if message not in messages:
                 messages.add(message)
 
-    return render_template('task1.html', messages=messages)
+    indexed_messages = {index + 1: msg for index, msg in enumerate(messages)}
+
+    return render_template('task1.html', messages=indexed_messages)
 
 
 def validate_name(name):

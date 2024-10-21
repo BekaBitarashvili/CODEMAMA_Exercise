@@ -47,13 +47,18 @@
         <br>
         <br>
         <div id="messages">
-            {% set unique_messages = [] %}
-            {% for message in messages %}
-                {% if message not in unique_messages %}
-                    <div>{{ message }}</div>
-                    {% set _ = unique_messages.append(message) %}
-                {% endif %}
-            {% endfor %}
+            <ul>
+                {% for index, message in messages.items() %}
+                    <li>{{ index }}) {{ message }}</li>
+                {% endfor %}
+            </ul>
+<!--            {% set unique_messages = [] %}-->
+<!--            {% for message in messages %}-->
+<!--                {% if message not in unique_messages %}-->
+<!--                    <div>{{ message }}</div>-->
+<!--                    {% set _ = unique_messages.append(message) %}-->
+<!--                {% endif %}-->
+<!--            {% endfor %}-->
         </div>
     </div>
 </div>
