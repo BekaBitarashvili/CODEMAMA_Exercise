@@ -116,8 +116,9 @@ def validate_name(name):
 @app.route('/clear_options', methods=['POST'])
 def clear_options():
     global messages
-    messages = set()
-    return render_template('task1.html', messages=messages)
+    messages.clear()
+    # messages = set()
+    return render_template('task1.html', messages={})
 
 
 @app.route('/submit', methods=['POST', 'GET'])
