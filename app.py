@@ -47,7 +47,7 @@ def task7():
     for _ in range(rows):
         row = []
         for _ in range(columns):
-            if random_data:  # If "Random Data" checkbox is checked
+            if random_data:
                 row.append(random.choice(['A', 'B', 'C', random.randint(1, 100)]))
             else:
                 row.append('Cell')
