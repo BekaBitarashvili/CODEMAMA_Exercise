@@ -1,3 +1,4 @@
+import random
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
@@ -37,7 +38,22 @@ def task6():
 
 @app.route('/task7', methods=['POST', 'GET'])
 def task7():
-    return render_template('task7.html')
+    rows = int(request.form.get('rows', 1))
+    columns = int(request.form.get('columns', 1))
+    random_data = request.form.get('random_data')
+
+    table = []
+
+    for _ in range(rows):
+        row = []
+        for _ in range(columns):
+            if random_data:  # If "Random Data" checkbox is checked
+                row.append(random.choice(['A', 'B', 'C', random.randint(1, 100)]))
+            else:
+                row.append('Cell')
+        table.append(row)
+
+    return render_template('task7.html', table=table)
 
 
 @app.route('/task8', methods=['POST', 'GET'])
