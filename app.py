@@ -79,10 +79,7 @@ def task11():
 @app.route('/task1', methods=['POST', 'GET'])
 def task1():
     global messages
-
-    # if request.method == 'POST':
-    #     name = request.form.get('firstName')
-    #     message = validate_name(name)['message']
+    
     if request.method == 'POST':
         if request.form.get('clear_options') == 'true':
             messages.clear()
