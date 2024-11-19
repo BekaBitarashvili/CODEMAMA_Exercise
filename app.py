@@ -38,22 +38,22 @@ def task6():
 
 @app.route('/task7', methods=['POST', 'GET'])
 def task7():
-    rows = int(request.form.get('rows', 1))
-    columns = int(request.form.get('columns', 1))
-    random_data = request.form.get('random_data')
+    # rows = int(request.form.get('rows', 1))
+    # columns = int(request.form.get('columns', 1))
+    # random_data = request.form.get('random_data')
+    #
+    # table = []
+    #
+    # for _ in range(rows):
+    #     row = []
+    #     for _ in range(columns):
+    #         if random_data:
+    #             row.append(random.choice(['A', 'B', 'C', random.randint(1, 100)]))
+    #         else:
+    #             row.append('Cell')
+    #     table.append(row)
 
-    table = []
-
-    for _ in range(rows):
-        row = []
-        for _ in range(columns):
-            if random_data:
-                row.append(random.choice(['A', 'B', 'C', random.randint(1, 100)]))
-            else:
-                row.append('Cell')
-        table.append(row)
-
-    return render_template('task7.html', table=table)
+    return render_template('task7.html')
 
 
 @app.route('/task8', methods=['POST', 'GET'])
