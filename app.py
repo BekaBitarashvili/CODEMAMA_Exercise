@@ -1,7 +1,11 @@
 import random
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, flash, url_for
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
+
+CORRECT_USER = "administrator@gmail.com"
+CORRECT_PASS = "password123"
 
 messages = set()
 
@@ -59,6 +63,27 @@ def task10():
 @app.route('/task11', methods=['POST', 'GET'])
 def task11():
     return render_template('task11.html')
+
+@app.route('/task12', methods=['POST', 'GET'])
+def task12():
+    if request.method == 'POST':
+        email_or_number = request.form['emailOrNumber']
+        password = request.form['password']
+
+        if email_or_number == CORRECT_USER and password == CORRECT_PASS:
+            flash("ავტორიზაცია წარმატებულია")
+            return redirect(url_for('task12'))
+        elif email_or_number != CORRECT_USER and password == CORRECT_PASS:
+            flash("არასწორი ელ.ფოსტა")
+            return redirect(url_for('task12'))
+        elif email_or_number == CORRECT_USER and password != CORRECT_PASS:
+            flash("არასწორი პაროლი")
+            return redirect(url_for('task10'))
+        else:
+            flash("არასწორი პაროლი და აკსდასდასდაჯსდნკ :)")
+            return redirect(url_for('task12'))
+
+    return render_template('task12.html')
 
 
 @app.route('/task1', methods=['POST', 'GET'])
