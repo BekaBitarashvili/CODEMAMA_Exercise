@@ -10,6 +10,14 @@ CORRECT_PASS = "password123"
 messages = set()
 
 
+bugs = [
+    {'id': 101, 'status': 'Open', 'priority': 'High', 'details': 'Login page not loading'},
+    {'id': 102, 'status': 'Closed', 'priority': 'Low', 'details': 'Typo in About Us page'},
+    {'id': 103, 'status': 'In Progress', 'priority': 'Medium', 'details': 'Profile picture upload issue'},
+    {'id': 104, 'status': 'Open', 'priority': 'Critical', 'details': 'Database connection error'},
+]
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -106,6 +114,22 @@ def validate():
         flash('რეგისტრაცია წარმატებულია!', 'success')
 
     return render_template('task13.html')
+
+@app.route('/task14', methods=['POST', 'GET'])
+def task14():
+    return render_template('task14.html', bugs=bugs)
+
+@app.route('/hidden', methods=['POST', 'GET'])
+def hidden():
+    return render_template('hidden.html')
+
+@app.route('/okay', methods=['POST', 'GET'])
+def okay():
+    return render_template('okay.html')
+
+@app.route('/bonus', methods=['POST', 'GET'])
+def bonus():
+    return "<h1>ბონუსი დაიმსახურე!!!</h1>"
 
 
 @app.route('/task1', methods=['POST', 'GET'])
