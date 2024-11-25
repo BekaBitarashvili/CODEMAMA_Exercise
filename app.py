@@ -85,6 +85,28 @@ def task12():
 
     return render_template('task12.html')
 
+@app.route('/task13', methods=['POST', 'GET'])
+def task13():
+    return render_template('task13.html')
+
+@app.route('/validate', methods=['POST', 'GET'])
+def validate():
+    username = request.form['username']
+    password = request.form['password']
+    email = request.form['email']
+
+    if len(username) < 5:
+        flash('მომხმარებელი უნდა იყოს მინიმუმ 5 სიმბოლო', 'error')
+    elif len(password) < 8 or not any(char.isdigit() for char in password) or not any(
+            char in '!@#$%^&*' for char in password):
+        flash('პაროლი უნდა იყოს მინიმუმ 8 სიმბოლო და შეიცავდეს ციფრებს და სიმბოლოს.', 'error')
+    elif '@' not in email or '.' not in email:
+        flash('ინვალიდ.', 'error')
+    else:
+        flash('რეგისტრაცია წარმატებულია!', 'success')
+
+    return render_template('task13.html')
+
 
 @app.route('/task1', methods=['POST', 'GET'])
 def task1():
