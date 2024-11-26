@@ -1,4 +1,5 @@
 import random
+import requests
 from flask import Flask, render_template, request, jsonify, redirect, flash, url_for
 
 app = Flask(__name__)
@@ -10,12 +11,40 @@ CORRECT_PASS = "password123"
 messages = set()
 
 
-bugs = [
-    {'id': 101, 'status': 'Open', 'priority': 'High', 'details': 'Login page not loading'},
-    {'id': 102, 'status': 'Closed', 'priority': 'Low', 'details': 'Typo in About Us page'},
-    {'id': 103, 'status': 'In Progress', 'priority': 'Medium', 'details': 'Profile picture upload issue'},
-    {'id': 104, 'status': 'Open', 'priority': 'Critical', 'details': 'Database connection error'},
-]
+users = []
+
+@app.route('/api/users', methods=['GET'])
+def get_users():
+    return jsonify(users), 200
+
+
+@app.route('/api/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    required_fields = ['name', 'email', 'address', 'phone', 'gender', 'age', 'dob', 'job']
+
+    if all(field in data for field in required_fields):
+        users.append(data)
+        return jsonify(data), 201
+    else:
+        return jsonify({'error': 'Missing one or more required fields'}), 400
+
+@app.route('/api/users/<int:id>', methods=['PUT'])
+def update_user(id):
+    data = request.get_json()
+    if id < len(users):
+        users[id].update(data)
+        return jsonify(users[id]), 200
+    else:
+        return jsonify({'error': 'User not found'}), 404
+
+@app.route('/api/users/<int:id>', methods=['DELETE'])
+def delete_user(id):
+    if id < len(users):
+        deleted_user = users.pop(id)
+        return jsonify(deleted_user), 200
+    else:
+        return jsonify({'error': 'User not found'}), 404
 
 
 @app.route('/')
@@ -117,7 +146,7 @@ def validate():
 
 @app.route('/task14', methods=['POST', 'GET'])
 def task14():
-    return render_template('task14.html', bugs=bugs)
+    return render_template('task14.html')
 
 @app.route('/hidden', methods=['POST', 'GET'])
 def hidden():
@@ -130,6 +159,10 @@ def okay():
 @app.route('/bonus', methods=['POST', 'GET'])
 def bonus():
     return "<h1>ბონუსი დაიმსახურე!!!</h1>"
+
+@app.route('/task15', methods=['POST', 'GET'])
+def task15():
+    return render_template('task15.html')
 
 
 @app.route('/task1', methods=['POST', 'GET'])
@@ -201,9 +234,9 @@ def submit():
         return render_template('task4.html', error=error)
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
+# @app.errorhandler(404)
+# def page_not_found(e):
+#     return render_template('404.html'), 404
 
 
 if __name__ == '__main__':

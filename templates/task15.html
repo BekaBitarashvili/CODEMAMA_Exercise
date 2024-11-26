@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task15</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<h1>API დავალება - მომხმარებლების მენეჯმენტი</h1>
+
+<div>
+    <h3>ახლის შექმნა</h3>
+    <form id="createUserForm">
+        <label for="name">სახელი:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">ელ.ფოსტა:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="address">მისამართი:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="phone">მობილური:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="gender">სქესი:</label>
+        <select id="gender" name="gender">
+            <option value="Male">კაცი</option>
+            <option value="Female">ქალი</option>
+            <option value="Other">სხვა</option>
+        </select>
+
+        <label for="age">ასაკი:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="dob">დაბადების თარიღი:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="job">სამსახური:</label>
+        <input type="text" id="job" name="job" required>
+
+        <button type="submit">შექმნა</button>
+    </form>
+</div>
+
+<h2>ყველა მომხმარებელი</h2>
+<ul id="userList"></ul>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
