@@ -1,3 +1,4 @@
+import os
 import random
 import requests
 from flask import Flask, render_template, request, jsonify, redirect, flash, url_for
@@ -8,10 +9,56 @@ app.secret_key = "super secret key"
 CORRECT_USER = "administrator@gmail.com"
 CORRECT_PASS = "password123"
 
+UPLOAD_FOLDER = 'static/uploads'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 messages = set()
 
 
 users = []
+
+user_data = {
+    "name": "Elon Musk",
+    "email": "elonmusk@example.com",
+    "profile_pic": "/static/default-profile.png"
+}
+
+@app.route('/task16')
+def task16():
+    return render_template('task16.html', user=user_data)
+
+
+@app.route('/update-profile', methods=['POST'])
+def update_profile():
+    global user_data
+    name = request.form.get('name')
+    email = request.form.get('email')
+    profile_pic = request.files.get('profile_pic')
+
+    if name and email:
+        user_data['name'] = name
+        user_data['email'] = email
+
+        if profile_pic and profile_pic.filename != '':
+            filename = profile_pic.filename
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+            try:
+                profile_pic.save(file_path)
+                user_data['profile_pic'] = '/' + file_path.replace(os.sep, '/')
+
+            except Exception as e:
+                flash(f'Failed to upload the file: {str(e)}', 'error')
+                return redirect(url_for('profile'))
+
+        flash('Profile updated successfully!', 'success')
+    else:
+        flash('Name and Email are required!', 'error')
+
+    return redirect(url_for('task16'))
 
 @app.route('/api/users', methods=['GET'])
 def get_users():

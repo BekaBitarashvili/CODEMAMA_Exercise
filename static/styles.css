@@ -11,16 +11,17 @@ body {
     height: 100vh;
     animation: change 5s ease-in-out infinite;
 }
+
 @keyframes change {
-	0% {
-		background-position: 0 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0 50%;
-	}
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
 }
 
 .container {
@@ -102,50 +103,53 @@ body {
 .content {
     flex: 1;
 }
+
 /*** TERMINAL ***/
 .terminal-box {
-  background-color: #000;
-  color: #00FF00;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-  font-family: 'Courier New', Courier, monospace;
-  max-width: 600px;
-  margin: 100px auto;
-  overflow: hidden;
-  position: relative;
+    background-color: #000;
+    color: #00FF00;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 600px;
+    margin: 100px auto;
+    overflow: hidden;
+    position: relative;
 }
 
 .terminal-content {
-  white-space: pre-line;
-  position: relative;
+    white-space: pre-line;
+    position: relative;
 }
 
 /* Cursor effect */
 .terminal-content::after {
-  content: "|";
-  animation: blink 1s step-end infinite;
-  display: inline-block;
-  vertical-align: bottom;
+    content: "|";
+    animation: blink 1s step-end infinite;
+    display: inline-block;
+    vertical-align: bottom;
 }
 
 /* Text typing animation */
 @keyframes typing {
-  from {
-    width: 0;
-  }
+    from {
+        width: 0;
+    }
 }
 
 @keyframes blink {
-  50% {
-    border-color: transparent;
-  }
+    50% {
+        border-color: transparent;
+    }
 }
+
 .testlogo {
     width: 200px;
     height: 200px;
 }
+
 .amocana3 {
-        text-decoration: none;
-        color: white;
-    }
+    text-decoration: none;
+    color: white;
+}

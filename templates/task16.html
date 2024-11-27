@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="email"], input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .profile-img {
+            display: block;
+            margin-top: 10px;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .btn {
+            width: 100%;
+            background: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+        .mtavar16 {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-style: dotted;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<form action="/" method="GET">
+    <button class="mtavar16" type="submit">მთავარი</button>
+</form>
+<body>
+<div class="container">
+    <h1>მომხმარებლის პროფილი</h1>
+    <form id="profile-form" method="POST" action="/update-profile">
+        <div class="form-group">
+            <label for="name">სახელი:</label>
+            <input type="text" id="name" name="name" value="{{ user['name'] }}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">ელ.ფოსტა:</label>
+            <input type="email" id="email" name="email" value="{{ user['email'] }}" required>
+        </div>
+        <div class="form-group">
+            <label for="profile-pic">პროფილის სურათი:</label>
+            <input type="file" id="profile-pic" name="profile_pic">
+            <img src="{{ user['profile_pic'] }}" alt="Profile Picture" class="profile-img">
+        </div>
+        <button type="submit" class="btn">რედაქტირება</button>
+    </form>
+</div>
+</body>
+</html>
