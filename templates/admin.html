@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ADMINKA</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        form { display: inline-block; text-align: left; }
+        .message { color: green; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+<form action="/admin/settings" method="POST" onsubmit="return checkInput(event)">
+    <h2>შეღწევადობის პარამეტრები</h2>
+    <label for="site_name">დასახელება:</label>
+    <input type="text" id="site_name" name="site_name" required>
+
+    <label for="maintenance">შენარჩუნების რეჟიმი:</label>
+    <select id="maintenance" name="maintenance">
+        <option value="off">გამორთული</option>
+        <option value="on">ჩართული</option>
+    </select>
+
+    <button type="submit">გაშვება</button>
+</form>
+
+{% if message %}
+    <p class="message">{{ message }}</p>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<p>
+    Deep within the archives of Astra Corp, a legendary piece of code remained unsolved. It was rumored that the first
+    administrator of the system, a mysterious figure known only as Delta, had left a hidden key—one that could unlock
+    the company’s most valuable secrets.
+
+    Many had tried to break the code, but all had failed. The security measures were too advanced, and the system only
+    responded to a single word—one that had been forgotten over time.
+
+    One evening, a young intern named Ivy stumbled upon an old document. It described a name that was never spoken, a
+    fragment of a title that once belonged to the great guy. Intrigued, she sat before the terminal and typed: ...
+    <br><br>
+
+    Nothing happened at first. Then, the screen flickered. Lines of ancient code scrolled rapidly, and a message
+    appeared:<br><br>
+
+    "🎉 You found it! Congrats! 🎉"<br><br>
+
+    A hidden vault opened behind her, revealing a notebook filled with algorithms ahead of their time. Ivy had done
+    it—she had unearthed the secret left behind by the lost admin.
+
+    And with that, a new era of Astra Corp had begun.
+</p>
+
+</body>
+</html>

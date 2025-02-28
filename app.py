@@ -20,46 +20,6 @@ messages = set()
 
 users = []
 
-user_data = {
-    "name": "Elon Musk",
-    "email": "elonmusk@example.com",
-    "profile_pic": "/static/default-profile.png"
-}
-
-@app.route('/task16')
-def task16():
-    return render_template('task16.html', user=user_data)
-
-
-@app.route('/update-profile', methods=['POST'])
-def update_profile():
-    global user_data
-    name = request.form.get('name')
-    email = request.form.get('email')
-    profile_pic = request.files.get('profile_pic')
-
-    if name and email:
-        user_data['name'] = name
-        user_data['email'] = email
-
-        if profile_pic and profile_pic.filename != '':
-            filename = profile_pic.filename
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-
-            try:
-                profile_pic.save(file_path)
-                user_data['profile_pic'] = '/' + file_path.replace(os.sep, '/')
-
-            except Exception as e:
-                flash(f'Failed to upload the file: {str(e)}', 'error')
-                return redirect(url_for('profile'))
-
-        flash('Profile updated successfully!', 'success')
-    else:
-        flash('Name and Email are required!', 'error')
-
-    return redirect(url_for('task16'))
-
 @app.route('/api/users', methods=['GET'])
 def get_users():
     return jsonify(users), 200
@@ -172,6 +132,24 @@ def task12():
 @app.route('/task13', methods=['POST', 'GET'])
 def task13():
     return render_template('task13.html')
+
+@app.route('/admin', methods=['POST', 'GET'])
+def admin():
+    return render_template('admin.html')
+
+
+@app.route('/admin/settings', methods=['GET', 'POST'])
+def admin_settings():
+    message = None
+    if request.method == 'POST':
+        site_name = request.form['site_name']
+
+        if site_name.lower() == "inistrator":
+            message = "🎉 You found it! Congrats! 🎉"
+        else:
+            message = "არასწორია!"
+
+    return render_template('admin.html', message=message)
 
 @app.route('/validate', methods=['POST', 'GET'])
 def validate():
