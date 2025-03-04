@@ -144,7 +144,7 @@ def admin_settings():
     if request.method == 'POST':
         site_name = request.form['site_name']
 
-        if site_name.lower() == "inistrator":
+        if site_name.lower() == "istrator":
             message = "🎉 You found it! Congrats! 🎉"
         else:
             message = "არასწორია!"
