@@ -20,6 +20,9 @@ messages = set()
 
 users = []
 
+
+
+
 @app.route('/api/users', methods=['GET'])
 def get_users():
     return jsonify(users), 200
@@ -86,7 +89,30 @@ def task6():
 
 @app.route('/task7', methods=['POST', 'GET'])
 def task7():
-    return render_template('task7.html')
+    correct_answer = "ჩრდილი"
+    if request.method == "POST":
+        answer = request.form.get("answer", "").strip().lower()
+        if answer == correct_answer:
+            return redirect(url_for("logic_puzzle"))
+    return render_template("task7.html")
+
+@app.route("/logic-puzzle", methods=["GET", "POST"])
+def logic_puzzle():
+    is_smiling = False
+    if request.method == "POST":
+        word = request.form.get("word", "").strip().lower()
+        if word == "გაიცინე":
+            is_smiling = True
+    return render_template("logic_puzzle.html", is_smiling=is_smiling)
+
+@app.route("/pattern-recognition", methods=["GET", "POST"])
+def pattern_recognition():
+    correct_answer = "25"
+    if request.method == "POST":
+        answer = request.form.get("answer", "").strip()
+        if answer == correct_answer:
+            return "<h2>გილოცავ! შენ წარმატებით გაიარე ყველა დავალება.</h2>"
+    return render_template("pattern.html")
 
 
 @app.route('/task8', methods=['POST', 'GET'])
